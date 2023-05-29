@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 
 from .models import Product
 from .forms import ProductForm
@@ -39,6 +39,8 @@ def update_cart(request, product_id):
 def remove_from_cart(request, product_id):
     cart = request.session.get('cart', {})
     product = get_object_or_404(Product, pk=product_id)
+    print("Cart: ", cart)
+    product_id = str(product_id)
     if product_id in cart:
         print("Yes. In Cart")
         del cart[product_id]
