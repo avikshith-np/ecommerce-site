@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <title>CRUD Operations</title>
+  <style>
+    form {
+      margin-bottom: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .success-msg {
+      color: green;
+    }
+
+    .error-msg {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>CRUD Operations</h1>
+
+  <h2>Add Product</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="add-name">Product Name:</label>
+    <input type="text" id="add-name" name="add_name" required>
+    <label for="add-price">Price:</label>
+    <input type="number" id="add-price" name="add_price" required>
+    <label for="add-image">Image:</label>
+    <input type="file" id="add-image" name="add_image" accept="image/*">
+    <input type="submit" value="Add">
+  </form>
+
+  <h2>Edit Product</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="edit-select">Select Product:</label>
+    <select id="edit-select" name="edit_select">
+      {% for product in products %}
+        <option value="{{ product.id }}">{{ product.name }}</option>
+      {% endfor %}
+    </select>
+    <label for="edit-name">Product Name:</label>
+    <input type="text" id="edit-name" name="edit_name" required>
+    <label for="edit-price">Price:</label>
+    <input type="number" id="edit-price" name="edit_price" required>
+    <label for="edit-image">Image:</label>
+    <input type="file" id="edit-image" name="edit_image" accept="image/*">
+    <input type="submit" value="Edit">
+  </form>
+
+  <h2>Remove Product</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="remove-select">Select Product:</label>
+    <select id="remove-select" name="remove_select">
+      {% for product in products %}
+        <option value="{{ product.id }}">{{ product.name }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Remove">
+  </form>
+
+  <h2>Product List</h2>
+  <table>
+    <tr>
+      <th>Product ID</th>
+      <th>Product Name</th>
+      <th>Price</th>
+    </tr>
+    {% for product in products %}
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="3">No products found.</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  {% if success_msg %}
+    <p class="success-msg">{{ success_msg }}</p>
+  {% endif %}
+  {% if error_msg %}
+    <p class="error-msg">{{ error_msg }}</p>
+  {% endif %}
+</body>
+</html>

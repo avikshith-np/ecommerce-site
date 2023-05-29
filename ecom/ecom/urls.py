@@ -20,8 +20,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 
-from core.views import FrontPage
-from accounts.views import UserRegistrationView, loginview, logoutrequest
+from core.views import FrontPage, crud_operations
+from accounts.views import registerview, loginview, logoutrequest
 from store.views import cart, add_to_cart, update_cart, remove_from_cart, add_product, edit_product, remove_product
 
 
@@ -29,7 +29,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', FrontPage, name='frontpage'),
 
-    path('accounts/register/', UserRegistrationView.as_view(), name='register'),
+    path("crud/", crud_operations, name="crud_operations"),
+
+    path('accounts/register/', registerview, name='register'),
     path('accounts/login/', loginview, name='login'),
     path('accounts/logout/', logoutrequest, name='logoutrequest'),
 
