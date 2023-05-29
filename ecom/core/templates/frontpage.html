@@ -1,0 +1,27 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block content %}
+<section>
+    <div class="deals1 deal-box">
+        <h3 id="deals-head">Best Deals</h3>
+        <div class="deals">
+          {% for item in products %}
+            <div class="deals-item">
+              <div class="image">
+                <a href="#"><img src="{{ item.image.url }}" width="100%" alt="{{ product.name }}"></a>
+              </div>
+              <h6 id="deals-text">{{ item.name }}</h6>
+              <h6 id="deals-text">₹{{ item.price }}</h6>
+              <form method="post" action="{% url 'add_to_cart' item.id %}">
+                {% csrf_token %}
+                <input type="submit" value="Add to Cart">
+              </form>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

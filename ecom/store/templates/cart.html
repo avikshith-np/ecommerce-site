@@ -1,0 +1,36 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block content %}  
+  <h1>Cart</h1>
+  
+  <table>
+    <tr>
+      <th>Product Image</th>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    {% for product in products %}
+        <tr>
+        <td><img src="{{ product.image.url }}" alt="{{ product.name }}"></td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>${{ product.price }}</td>
+        <td>
+            <form method="post" action="{% url 'remove_from_cart' product.id %}">
+                {% csrf_token %}
+                <input type="submit" value="Remove">
+            </form>            
+        </td>
+        </tr>
+        {% endfor %}
+    <tr>
+    <td colspan="3" class="total-label">Total Quantity:</td>
+    <td class="total-value">{{ total_quantity }}</td>
+    <td colspan="2" class="total-label">Total Price: ${{ total_price }}</td>
+    </tr>
+  </table>
+{% endblock %}

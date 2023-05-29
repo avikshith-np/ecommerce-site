@@ -1,0 +1,38 @@
+#deals-head {
+    padding: 1rem;
+}
+.deal-box {
+    background-color: #FFFFFF;
+    box-shadow: 1px 2px 18px #888888;
+}
+.deals {
+    display: flex;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.123);
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+.deals::-webkit-scrollbar{
+    width: 0;
+}
+.deals-item {
+    min-width: 201px;
+    min-height: 250px;
+    border-right: 1px solid rgba(0, 0, 0, 0.123);
+    background-color: #FFFFFF;
+    text-align: center;
+    margin: 2px;
+
+}
+.deals-item .image {
+    height: 200px;
+    width: 200px;
+}
+#deals-text {
+    height: 30px;
+    width: 150px;
+    margin: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

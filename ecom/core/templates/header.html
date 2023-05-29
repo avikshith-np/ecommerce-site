@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="{%  static 'core/favicon.ico' %}">
+  <title>{% block title %}{% endblock %} Ecommerce Site</title>
+  {% include 'css.html' %}
+  {% include 'js.html'%} 
+
+<body>
+  <header class="header">
+    <a href="#" class="logo">Ecommerce Site</a>
+    <nav class="navbar">
+        <a href="#" class="active">Today's Deals</a>
+        <a href="#">Health, Household, Personal Care</a>
+        <a href="#">Sports, Fitness, Outdoors</a>
+        <a href="#">Home Improvement</a>
+        <a href="{% url 'cart' %}">Cart</a>
+    </nav>
+ </header>
+  {% block content %}
+  
+  {% endblock %}
+</body>
+
+</html>
