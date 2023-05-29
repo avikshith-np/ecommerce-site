@@ -12,15 +12,16 @@
 
 <body>
   <header class="header">
-    <a href="#" class="logo">Ecommerce Site</a>
+    <a href="{% url 'frontpage' %}" class="logo">Ecommerce Site</a>
     <nav class="navbar">
-        <a href="#" class="active">Today's Deals</a>
-        <a href="#">Health, Household, Personal Care</a>
-        <a href="#">Sports, Fitness, Outdoors</a>
-        <a href="#">Home Improvement</a>
-        <a href="{% url 'cart' %}">Cart</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'logoutrequest' %}">{{ user.username }}, Logout</a>
+        {% else %}
+          <a href="{% url 'login' %}">Login/Register</a>
+        {% endif %}
+        <a href="{% url 'cart' %}"><i class='bx bx-shopping-bag'></i>Cart</a>
     </nav>
- </header>
+  </header>
   {% block content %}
   
   {% endblock %}

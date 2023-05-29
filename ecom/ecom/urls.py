@@ -21,7 +21,7 @@ from django.conf import settings
 
 
 from core.views import FrontPage
-from accounts.views import UserRegistrationView, UserLoginView
+from accounts.views import UserRegistrationView, loginview, logoutrequest
 from store.views import cart, add_to_cart, update_cart, remove_from_cart, add_product, edit_product, remove_product
 
 
@@ -30,7 +30,8 @@ urlpatterns = [
     path('', FrontPage, name='frontpage'),
 
     path('accounts/register/', UserRegistrationView.as_view(), name='register'),
-    path('accounts/login/', UserLoginView.as_view(), name='login'),
+    path('accounts/login/', loginview, name='login'),
+    path('accounts/logout/', logoutrequest, name='logoutrequest'),
 
     path('cart/', cart, name='cart'),
     path('product/<int:product_id>/add-to-cart/', add_to_cart, name='add_to_cart'),

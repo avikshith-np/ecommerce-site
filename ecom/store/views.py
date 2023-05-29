@@ -11,11 +11,12 @@ def cart(request):
     products = Product.objects.filter(id__in=product_ids)
     total_quantity = sum(cart.values())
     total_price = sum(product.price * quantity for product, quantity in zip(products, cart.values()))
+    print("Cart: ", cart)
 
     return render(request, 'cart.html', {'products': products, 'total_quantity': total_quantity, 'total_price': total_price})
 
 def add_to_cart(request, product_id):
-    product = get_object_or_404(Product, pk=product_id)
+    #product = get_object_or_404(Product, pk=product_id)
     cart = request.session.get('cart', {})
     cart[product_id] = cart.get(product_id, 0) + 1
     request.session['cart'] = cart
