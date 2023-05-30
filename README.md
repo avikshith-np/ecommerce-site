@@ -1,5 +1,9 @@
 # ecommerce-site
 
+Full Answer Video
+
+[![Video Answer](https://i.ytimg.com/vi/XtP5KfL4-rQ/maxresdefault.jpg)](https://youtu.be/XtP5KfL4-rQ "Video Answer") 
+
 1. Create a Registration and Login Page for users.
 
 ![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGMxZmVmMzU3NjZjYTMyMWE4MTc5ZmZhNDQ2OTRlYTY0MGIzMzRkOCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/3fBBwIo5tab6klQ1A0/giphy.gif)
